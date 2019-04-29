@@ -1,42 +1,26 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import HelloWorld from './src/component/HelloWorld';
-import Bananas from './src/component/Bananas';
-import LotsOfGreetings from './src/component/LotsOfGreetings';
-import BlinkApp from './src/component/BlinkApp';
-import FetchBasics from './src/component/FetchExample';
+import React from 'react';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import About from './src/pages/About';
+import HomeScreen from './src/pages/HomeScreen';
+import Setting from './src/pages/Setting';
+import DemoCanvas from './src/pages/Canvas';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    About: About,
+    Setting: Setting,
+    Canvas: DemoCanvas
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
 
-type Props = {};
-export default class App extends Component<Props> {
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
   render() {
-    return (
-      <FetchBasics />
-    );
+    return <AppContainer />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
