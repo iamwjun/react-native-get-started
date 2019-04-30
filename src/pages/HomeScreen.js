@@ -27,6 +27,19 @@ export default class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate('Canvas')}
           />
         </View> 
+        <View style={{ marginTop: 20, }}>
+          <Button
+            title="Go to Webview"
+            onPress={() => this.props.navigation.navigate('Webview')}
+          />
+        </View>
+        <View style={{ marginTop: 20, }}>
+          <Button
+            title="Go to ImagePicker"
+            color="#841584"
+            onPress={() => this.props.navigation.navigate('ImagePickeDemo')}
+          />
+        </View>
       </View>
     );
   }
